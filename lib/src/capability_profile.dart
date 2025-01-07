@@ -11,10 +11,13 @@ class CapabilityProfile {
   CapabilityProfile._internal(this.name, this.codePages);
 
   /// Public factory
-  static Future<CapabilityProfile> load({String name = 'default'}) async {
+  static Future<CapabilityProfile> load({
+    String name = 'default',
+    bool cache = true,
+  }) async {
     final content = await rootBundle.loadString(
       'packages/flutter_esc_pos_utils/resources/capabilities.json',
-      cache: false,
+      cache: cache,
     );
     Map capabilities = json.decode(content);
 
